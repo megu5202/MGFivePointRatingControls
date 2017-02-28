@@ -11,33 +11,35 @@ import UIKit
 
 final class FivePointRating: UIControl {
     
-    var value: Float!
-    
     typealias Action = () -> Void
     
+    private var value: Float!
     private var selectedImage: UIImage!
     private var deselectedImage: UIImage!
     
-    private var editable: Bool!
-    private var valueChangedAction: Action?
+//    private var editable: Bool!
+//    private var valueChangedAction: Action?
     
-    private var imageView1: UIImageView!
-    private var imageView2: UIImageView!
-    private var imageView3: UIImageView!
-    private var imageView4: UIImageView!
-    private var imageView5: UIImageView!
+    private var button1: UIButton!
+    private var button2: UIButton!
+    private var button3: UIButton!
+    private var button4: UIButton!
+    private var button5: UIButton!
+    private var buttons: [UIButton]!
     
-    convenience init(selectedImage: UIImage, deselectedImage: UIImage, initialValue: Float? = 0.0, editable: Bool? = false, valueChangedAction: Action? = nil) {
+    convenience init(selectedImage: UIImage, deselectedImage: UIImage, initialValue: Float? = 0.0/*, editable: Bool? = false, valueChangedAction: Action? = nil*/) {
         let frame = CGRect(x: 0.0, y: 0.0, width: ((20.0 * 5) + (10.0 * 4)), height: 20.0)
         self.init(frame: frame)
         
         self.value = initialValue
-        self.editable = editable
-        self.valueChangedAction = valueChangedAction
+//        self.editable = editable
+//        self.valueChangedAction = valueChangedAction
         self.selectedImage = selectedImage
         self.deselectedImage = deselectedImage
         
-        self.formatView()
+        self.addButtons()
+        self.formatButtons()
+        self.updateButtonStates()
     }
     
     override private init(frame: CGRect) {
@@ -51,38 +53,59 @@ final class FivePointRating: UIControl {
         super.init(coder: aDecoder)
     }
     
-    private func formatView() {
-        isUserInteractionEnabled = editable
+    private func addButtons() {
+        let buttonSpacing: CGFloat = 10.0
+        let buttonFrame = CGRect(x: 0.0, y: 0.0, width: 20.0, height: 20.0)
         
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .horizontal
-        stackView.alignment = .center
-        stackView.spacing = 10.0
-        stackView.backgroundColor = UIColor.cyan
-        stackView.isUserInteractionEnabled = true
-        addSubview(stackView)
-        stackView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        stackView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        button1 = UIButton(frame: buttonFrame)
+        button1.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(button1)
+        button1.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        button1.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
-        stackView.addGestureRecognizer(tapGesture)
+        button2 = UIButton(frame: buttonFrame)
+        addSubview(button2)
+        button2.leadingAnchor.constraint(equalTo: button1.trailingAnchor, constant: buttonSpacing).isActive = true
+        button2.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         
-        imageView1 = UIImageView(image: deselectedImage, highlightedImage: selectedImage)
-        imageView1.isUserInteractionEnabled = true
-        imageView2 = UIImageView(image: deselectedImage, highlightedImage: selectedImage)
-        imageView3 = UIImageView(image: deselectedImage, highlightedImage: selectedImage)
-        imageView4 = UIImageView(image: deselectedImage, highlightedImage: selectedImage)
-        imageView5 = UIImageView(image: deselectedImage, highlightedImage: selectedImage)
+        button3 = UIButton(frame: buttonFrame)
+        addSubview(button3)
+        button3.leadingAnchor.constraint(equalTo: button2.trailingAnchor, constant: buttonSpacing).isActive = true
+        button3.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         
-        stackView.addArrangedSubview(imageView1)
-        stackView.addArrangedSubview(imageView2)
-        stackView.addArrangedSubview(imageView3)
-        stackView.addArrangedSubview(imageView4)
-        stackView.addArrangedSubview(imageView5)
+        button4 = UIButton(frame: buttonFrame)
+        addSubview(button4)
+        button4.leadingAnchor.constraint(equalTo: button3.trailingAnchor, constant: buttonSpacing).isActive = true
+        button4.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        
+        button5 = UIButton(frame: buttonFrame)
+        addSubview(button5)
+        button5.leadingAnchor.constraint(equalTo: button4.trailingAnchor, constant: buttonSpacing).isActive = true
+        button5.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        
+        buttons = [button1, button2, button3, button4, button5]
     }
     
-    @objc private func tapAction() {
-        valueChangedAction?()
+    private func formatButtons() {
+        buttons.forEach { button in
+            button.translatesAutoresizingMaskIntoConstraints = false
+            button.adjustsImageWhenHighlighted = true
+            button.setImage(selectedImage, for: .highlighted)
+            button.setImage(deselectedImage, for: .normal)
+            button.setImage(selectedImage, for: .selected)
+        }
     }
+    
+    private func updateButtonStates() {
+        let buttonValue = Int(value)
+        let buttonsToSelect = buttons[0..<buttonValue]
+        let buttonsToDeselect = buttons[buttonValue..<5]
+        
+        buttonsToSelect.forEach { $0.isSelected = true }
+        buttonsToDeselect.forEach { $0.isSelected = false }
+    }
+    
+//    @objc private func tapAction() {
+//        valueChangedAction?()
+//    }
 }

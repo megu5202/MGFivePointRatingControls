@@ -15,9 +15,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        starView = FivePointRating(selectedImage: #imageLiteral(resourceName: "darkStar"), deselectedImage: #imageLiteral(resourceName: "lightStar"), initialValue: 2.0, editable: true, valueChangedAction: {
-            print("value changed")
-        })
+        starView = FivePointRating(selectedImage: #imageLiteral(resourceName: "darkStar"), deselectedImage: #imageLiteral(resourceName: "lightStar"), initialValue: 3.0)
         view.addSubview(starView)
         
         starView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
