@@ -9,17 +9,17 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    var starView: FivePointRating!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        starView = FivePointRating(selectedImage: #imageLiteral(resourceName: "darkStar"), deselectedImage: #imageLiteral(resourceName: "lightStar"), initialValue: 3.0)
-        view.addSubview(starView)
+        let rating = FivePointRating(initialValue: 3.0, editable: true)
+        view.addSubview(rating)
         
-        starView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        starView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        rating.widthAnchor.constraint(equalToConstant: rating.frame.width).isActive = true
+        rating.heightAnchor.constraint(equalToConstant: rating.frame.height).isActive = true
+        rating.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        rating.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
     
     override func didReceiveMemoryWarning() {

@@ -12,7 +12,8 @@
 		A599B1F21E661BD800627B35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A599B1F01E661BD800627B35 /* Main.storyboard */; };
 		A599B1F41E661BD800627B35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A599B1F31E661BD800627B35 /* Assets.xcassets */; };
 		A599B1F71E661BD800627B35 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A599B1F51E661BD800627B35 /* LaunchScreen.storyboard */; };
-		A5A7F07A1E663E300034DB72 /* FivePointRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A7F0791E663E300034DB72 /* FivePointRating.swift */; };
+		A5A7F07A1E663E300034DB72 /* BrokenFivePointRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A7F0791E663E300034DB72 /* BrokenFivePointRating.swift */; };
+		A5A7F07D1E6779710034DB72 /* FivePointRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A7F07C1E6779710034DB72 /* FivePointRating.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +24,8 @@
 		A599B1F31E661BD800627B35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A599B1F61E661BD800627B35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A599B1F81E661BD800627B35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A5A7F0791E663E300034DB72 /* FivePointRating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FivePointRating.swift; sourceTree = "<group>"; };
+		A5A7F0791E663E300034DB72 /* BrokenFivePointRating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrokenFivePointRating.swift; sourceTree = "<group>"; };
+		A5A7F07C1E6779710034DB72 /* FivePointRating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FivePointRating.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +60,8 @@
 			children = (
 				A599B1EC1E661BD800627B35 /* AppDelegate.swift */,
 				A599B1EE1E661BD800627B35 /* ViewController.swift */,
-				A5A7F0791E663E300034DB72 /* FivePointRating.swift */,
+				A5A7F0791E663E300034DB72 /* BrokenFivePointRating.swift */,
+				A5A7F07C1E6779710034DB72 /* FivePointRating.swift */,
 				A599B1F01E661BD800627B35 /* Main.storyboard */,
 				A599B1F31E661BD800627B35 /* Assets.xcassets */,
 				A599B1F51E661BD800627B35 /* LaunchScreen.storyboard */,
@@ -141,7 +144,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A599B1EF1E661BD800627B35 /* ViewController.swift in Sources */,
-				A5A7F07A1E663E300034DB72 /* FivePointRating.swift in Sources */,
+				A5A7F07A1E663E300034DB72 /* BrokenFivePointRating.swift in Sources */,
+				A5A7F07D1E6779710034DB72 /* FivePointRating.swift in Sources */,
 				A599B1ED1E661BD800627B35 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
